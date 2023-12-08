@@ -1,6 +1,8 @@
+# import dependencies
 import requests
 from bs4 import BeautifulSoup
 import time
+
 
 def extract_links(elements, base_url, max_results=100):
     links = []
@@ -23,13 +25,13 @@ def find_links(start_url, base_url, depth=2):
     links = extract_links(elements, base_url)
 
     for url in links:
-        new_links = find_links(url, base_url, depth-1)
+        new_links = find_links(url, base_url, depth - 1)
         links = links.union(new_links)
     return links
 
-base = "https://lshunters.eu/"
-docs = base + ""
 
+base = "https://www.nowgoal24.com/"
+docs = base + ""
 
 # Parallel search
 """import ray
@@ -48,7 +50,3 @@ print(find_links(docs, base))
 end_time = time.time()
 total_time = end_time - start_time
 print(total_time)
-
-
-
-
